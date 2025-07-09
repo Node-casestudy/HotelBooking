@@ -1,0 +1,13 @@
+POSTMAN
+  ↓
+Backend (Express)
+  ↓
+app.js
+  ↓
+Routes (routes/*.js)
+  ↓
+Controller (controllers/*.js)
+  ↓
+Model (models/*.js → Mongoose)
+  ↓
+MongoDB (Data Inserted/Queried)

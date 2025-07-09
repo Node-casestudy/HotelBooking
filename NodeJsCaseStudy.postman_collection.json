@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "b887cb81-0f7f-49a8-a85d-a991983d7b2b",
+		"name": "NodeJsCaseStudy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40862914"
+	},
+	"item": [
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Dhinesh Kumar\",\r\n    \"email\": \"dhinesh.admin@example.com\",\r\n    \"password\": \"dhinesh123\",\r\n    \"role\": \"admin\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Hotel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmJlNTMxNDc4ODEzYzI4ZDA5Mjk4OCIsInJvbGUiOiJvd25lciIsImlhdCI6MTc1MTkwODk4MiwiZXhwIjoxNzUyNTEzNzgyfQ.pBZezzOlXucDDfYBUsNCd0Z3XSK_e-kMQwDFRPgsiWg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Cozy Heaven Hotel 3",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "A Pleasent Stay inside the city",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "Chennai",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "45,T Nagar, Chennai",
+							"type": "text"
+						},
+						{
+							"key": "contactEmail",
+							"value": "contact3@cozyhaven.com",
+							"type": "text"
+						},
+						{
+							"key": "contactPhone",
+							"value": "9876543212",
+							"type": "text"
+						},
+						{
+							"key": "amenities",
+							"value": "WiFi,AC,Parking,TV",
+							"type": "text"
+						},
+						{
+							"key": "images",
+							"type": "file",
+							"src": "/C:/Users/dhine/Downloads/thirdImage1.jpg"
+						},
+						{
+							"key": "images",
+							"type": "file",
+							"src": "/C:/Users/dhine/Downloads/thirdImage1.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/hotels/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"hotels",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Owner",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmJlOGQ1Yjc4YTkxMTg3ZmQ5ODE5MiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MTkwMjQ0OCwiZXhwIjoxNzUyNTA3MjQ4fQ._Uo9vicX8vTCphXU54zNkCKh7lROxEjDm3er_BJd2_o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/admin/verify-owner/686be531478813c28d092988",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"admin",
+						"verify-owner",
+						"686be531478813c28d092988"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Hotels",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmJlNGZjNDc4ODEzYzI4ZDA5Mjk4NSIsInJvbGUiOiJvd25lciIsImlhdCI6MTc1MTkwMjU4NCwiZXhwIjoxNzUyNTA3Mzg0fQ.Cc-Wn2tg0_C5lA57dJGm8RzduxSzfhOyQz55OzOOm74",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Cozy Heaven Hotel 1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "A peaceful beachside stay",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "Chennai",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "123 Beach Road, Chennai",
+							"type": "text"
+						},
+						{
+							"key": "contactEmail",
+							"value": "\tcontact1@cozyhaven.com",
+							"type": "text"
+						},
+						{
+							"key": "contactPhone",
+							"value": "9876543210",
+							"type": "text"
+						},
+						{
+							"key": "amenities",
+							"value": "WiFi,AC,Parking",
+							"type": "text"
+						},
+						{
+							"key": "images",
+							"type": "file",
+							"src": "/C:/Users/dhine/Downloads/download.jpg"
+						},
+						{
+							"key": "images",
+							"type": "file",
+							"src": "/C:/Users/dhine/Downloads/image (72).png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/hotels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"hotels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hotels with Owner Logged In",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmJlNGZjNDc4ODEzYzI4ZDA5Mjk4NSIsInJvbGUiOiJvd25lciIsImlhdCI6MTc1MTkwODE2NiwiZXhwIjoxNzUyNTEyOTY2fQ.KSzyky7QdcWOd-wf1HAyq3RFAKOJbdvaa8BRxV_YnCY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/hotels/my-hotels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"hotels",
+						"my-hotels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Rooms with HotelId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmJlNGZjNDc4ODEzYzI4ZDA5Mjk4NSIsInJvbGUiOiJvd25lciIsImlhdCI6MTc1MTkwODE2NiwiZXhwIjoxNzUyNTEyOTY2fQ.KSzyky7QdcWOd-wf1HAyq3RFAKOJbdvaa8BRxV_YnCY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"hotelId\": \"686bfbd3b78a91187fd981a5\",\r\n    \"roomType\": \"Single Economy Room\",\r\n    \"description\": \"Compact room for solo travelers with workspace and WiFi\",\r\n    \"baseFare\": 1600,\r\n    \"capacity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/rooms/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Booking by userToken",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmJkZDQ4NDc4ODEzYzI4ZDA5Mjk4MCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUxOTA5NzczLCJleHAiOjE3NTI1MTQ1NzN9.3Suh8yySA2O6_iUNeHFh7sKTO47vXw3T8X6vfOWS3LI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/bookings/my-bookings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"bookings",
+						"my-bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmJkZDQ4NDc4ODEzYzI4ZDA5Mjk4MCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzUxOTA5NzczLCJleHAiOjE3NTI1MTQ1NzN9.3Suh8yySA2O6_iUNeHFh7sKTO47vXw3T8X6vfOWS3LI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"roomId\": \"686c00044a698426cf395da8\",\r\n  \"hotelId\": \"686becbfb78a91187fd9819c\",\r\n  \"fromDate\": \"2025-07-10\",\r\n  \"toDate\": \"2025-07-12\",\r\n  \"guests\": 2,\r\n  \"totalFare\": 7000\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/bookings/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"bookings",
+						"book"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
