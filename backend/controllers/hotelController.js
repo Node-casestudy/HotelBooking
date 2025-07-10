@@ -15,7 +15,7 @@ exports.addHotel = async (req, res) => {
       address,
       contactEmail,
       contactPhone,
-      amenities: amenities ? amenities.split(',') : [],
+      amenities: amenities ,
       images: imageUrls,
       owner: req.user.id
     });

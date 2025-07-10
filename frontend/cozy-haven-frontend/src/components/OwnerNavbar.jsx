@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
-const Navbar = () => {
+const OwnerNavbar = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -20,8 +20,7 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav me-auto">
           <li className="nav-item">
-         
-
+            {/* <Link className="nav-link" to="/">Hotels</Link> */}
           </li>
           {user?.role === 'owner' && (
             <li className="nav-item">
@@ -60,4 +59,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default OwnerNavbar;

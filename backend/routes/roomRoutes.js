@@ -4,8 +4,21 @@ const { protect } = require('../middlewares/authMiddleware');
 const { checkRole } = require('../middlewares/roleMiddleware');
 const router = express.Router();
 
+const verifyToken = (req, res, next) => {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) return res.status(401).send("Access denied");
+    try {
+      const verified = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = verified;
+      next();
+    } catch (err) {
+      res.status(400).send("Invalid token");
+    }
+  };
+  
+
 router.post('/add', protect, checkRole('owner'), addRoom);
-router.get('/hotel/:hotelId', getRoomsByHotel);
+router.get('/hotel/:hotelId',verifyToken, getRoomsByHotel);
 router.get('/:id', getRoomById);
 
 module.exports = router;

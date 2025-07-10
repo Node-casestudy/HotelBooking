@@ -25,6 +25,8 @@ const Home = () => {
     fetchHotels();
   }, []);
 
+
+  
   return (
     <div className="row">
       {hotels.map((hotel) => (
@@ -40,8 +42,18 @@ const Home = () => {
  />
               <p>{hotel.description}</p>
               <p><strong>Location:</strong> {hotel.location}</p>
-              <Link to={`/hotel/${hotel._id}`} className="btn btn-primary">View Details</Link>
-            </div>
+              {user ? (
+  <Link to={`/hotel/${hotel._id}`} className="btn btn-primary">
+    View Details
+  </Link>
+) : (
+  <button
+    className="btn btn-secondary"
+    onClick={() => navigate("/login")}
+  >
+    Login to View Details
+  </button>
+)}            </div>
           </div>
         </div>
       ))}
