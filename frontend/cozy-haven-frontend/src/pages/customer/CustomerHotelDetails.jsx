@@ -7,6 +7,9 @@ const HotelRoomsPage = () => {
   const rooms = location.state || [];
   const navigate = useNavigate();
 
+  const handleBooking = ()=>{
+    navigate('/booking');
+  }
   return (
     <div className="container py-4">
       <div>
@@ -32,7 +35,7 @@ const HotelRoomsPage = () => {
                       </span>
                     </li>
                   </ul>
-                  <button className="btn btn-outline-primary mt-auto" onClick={navigate('/booking')}>
+                  <button className="btn btn-outline-primary mt-auto" onClick={handleBooking}>
                     Book Room
                   </button>
                 </div>
