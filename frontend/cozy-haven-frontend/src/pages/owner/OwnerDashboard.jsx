@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import OwnerNavbar from '../components/OwnerNavbar';
+import OwnerNavbar from '../../components/OwnerNavbar';
 import axios from 'axios';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import API from '../../services/axios';
+
 
 const OwnerDashboard = () => {
-  const [activeCard, setActiveCard] = useState('profile');
+  const navigate = useNavigate();
+  const [activeCard, setActiveCard] = useState('hotels');
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -15,6 +19,8 @@ const OwnerDashboard = () => {
     amenities: [],
     isActive: true,
   });
+  
+  
   
   const renderCardContent = () => {
     const [hotels, setHotels] = useState([]);
@@ -37,6 +43,7 @@ const OwnerDashboard = () => {
     }, []);
 
 
+    
     const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prev) => ({
@@ -94,9 +101,22 @@ const handleImageUpload = (e) => {
   setImages(selectedFiles);
 };
 
+const handleViewDetails = async (hotelId) => {
+  try {
+    const tokenful = localStorage.getItem('cozyUser');
+    const parsed = JSON.parse(tokenful);
+    const response = await API.get(`/rooms/hotel/${hotelId}`, {
+      headers: {
+        Authorization: `Bearer ${parsed.token}`,
+      },
+    });
+
+    navigate(`/hotel/${hotelId}/rooms/owner`, { state: response.data });
+  } catch (err) {
+    console.error('Failed to fetch rooms:', err);
+  }
+};
     switch (activeCard) {
-      case 'profile':
-        return <p>Name: Alice Johnson<br />Email: alice.owner@example.com</p>;
       case 'hotels':
         return (
           <>
@@ -110,6 +130,10 @@ const handleImageUpload = (e) => {
                       <img src={hotel.images[0]} alt="" className="img-fluid" />
                       <p className="card-text">{hotel.location}</p>
                       <p className="card-text text-muted">{hotel.description}</p>
+                      <Link onClick={() => handleViewDetails(hotel._id)}
+  className="btn btn-primary">
+    View Details
+  </Link>
                     </div>
                   </div>
                 </div>
@@ -146,12 +170,6 @@ const handleImageUpload = (e) => {
 
       {/* Navigation Buttons */}
       <div className="d-flex justify-content-center mb-4">
-        <button
-          className={`btn btn-outline-primary mx-2 ${activeCard === 'profile' ? 'active' : ''}`}
-          onClick={() => setActiveCard('profile')}
-        >
-          Profile
-        </button>
         <button
           className={`btn btn-outline-success mx-2 ${activeCard === 'hotels' ? 'active' : ''}`}
           onClick={() => setActiveCard('hotels')}

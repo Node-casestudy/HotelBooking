@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import API from '../services/axios';
-import { AuthContext } from '../context/AuthContext';
+import API from '../../services/axios';
+import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -17,7 +17,7 @@ const Login = () => {
       const role = res.data.user.role;
       if (role === 'admin') navigate('/admin/adminDashboard');
       else if (role === 'owner') navigate('/owner/dashboard');
-      else navigate('/');
+      else navigate('/customer/dashboard');
     } catch (err) {
       alert(err.response?.data?.message || 'Login failed');
     }

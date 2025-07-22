@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import API from '../services/axios';
-import { AuthContext } from '../context/AuthContext';
+import API from '../../services/axios';
+import { AuthContext } from '../../context/AuthContext';
 
-const Home = () => {
+const CustomerDashboard = () => {
   const [hotels, setHotels] = useState([]);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ const Home = () => {
   
   return (
     <div className="row">
+        <h3>Welcome to Customer's Dashboard</h3>
       {hotels.map((hotel) => (
         <div className="col-md-4 mb-4" key={hotel._id}>
           <div className="card">
@@ -76,4 +77,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default CustomerDashboard;

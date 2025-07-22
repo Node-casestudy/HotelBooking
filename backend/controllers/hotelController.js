@@ -50,7 +50,7 @@ exports.getHotelsByOwner = async (req, res) => {
 
 // Get hotels for the logged-in hotel owner
 exports.getMyHotels = async (req, res) => {
-  console.log("Inside getMyHotels for user", req.user._id); // ✅ Log here
+  // console.log("Inside getMyHotels for user", req.user._id); // ✅ Log here
   try {
     const hotels = await Hotel.find({ owner: req.user._id });
     res.json(hotels);
